@@ -1,0 +1,302 @@
+@import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap");
+
+@import "tailwindcss";
+
+/* ============================================================
+   FoodFlow — "The Pass" design system
+   A warm dispatch console grounded in the kitchen expediting pass.
+   ============================================================ */
+
+:root {
+  /* surfaces */
+  --paper: #f1ece2;
+  --paper-2: #e8e1d3;
+  --card: #fcfaf6;
+  --line: #e2d9c9;
+  --line-strong: #d2c6b1;
+
+  /* ink */
+  --ink: #211c15;
+  --ink-soft: #7c7264;
+  --ink-faint: #a89c89;
+
+  /* the family — desaturated, harmonized */
+  --pine: #1f4a3a;
+  --pine-deep: #163a2d;
+  --pine-tint: #dde7e0;
+
+  --ochre: #b87f1c;
+  --ochre-ink: #8a5d10;
+  --ochre-tint: #f1e4c8;
+
+  --persimmon: #b5482a;
+  --persimmon-ink: #8f3417;
+  --persimmon-tint: #f3ddd2;
+
+  --moss: #59762f;
+  --moss-ink: #435a22;
+  --moss-tint: #e6ecd5;
+
+  --steel: #3a5870;
+  --steel-ink: #2a4255;
+  --steel-tint: #dde6ec;
+
+  --shadow-sm: 0 1px 2px rgba(33, 28, 21, 0.06);
+  --shadow-md: 0 10px 30px -12px rgba(33, 28, 21, 0.22);
+  --radius: 18px;
+
+  --font-display: "Bricolage Grotesque", "Arial Black", system-ui, sans-serif;
+  --font-body: "Inter", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", monospace;
+}
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  background-color: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-feature-settings: "ss01", "cv05";
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection { background: var(--pine); color: #fff; }
+
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-thumb {
+  background: var(--line-strong);
+  border: 3px solid var(--paper);
+  border-radius: 10px;
+}
+
+/* ---- typography helpers ---- */
+.u-display { font-family: var(--font-display); letter-spacing: -0.02em; line-height: 0.98; }
+.u-mono { font-family: var(--font-mono); font-feature-settings: "tnum"; }
+.u-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+/* ============================================================
+   Ticket — the signature unit (notched corner + tear line)
+   ============================================================ */
+.ticket {
+  position: relative;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  /* the notch: top-right corner clipped like a torn stub */
+  clip-path: polygon(
+    0 0, calc(100% - 22px) 0, 100% 22px,
+    100% 100%, 0 100%
+  );
+}
+/* perforation dot sitting in the notch */
+.ticket::before {
+  content: "";
+  position: absolute;
+  top: 8px; right: 8px;
+  width: 8px; height: 8px;
+  border-radius: 999px;
+  background: var(--accent, var(--ink-faint));
+  opacity: 0.9;
+}
+
+/* a dashed "tear" rule used inside tickets and panels */
+.tear {
+  height: 0;
+  border: 0;
+  border-top: 1.5px dashed var(--line-strong);
+  margin: 0;
+}
+
+/* ============================================================
+   Panels (non-ticket containers)
+   ============================================================ */
+.panel {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+}
+
+/* ============================================================
+   Buttons
+   ============================================================ */
+.btn {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 14px;
+  border-radius: 12px;
+  padding: 12px 18px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: transform 0.12s ease, background 0.15s ease, box-shadow 0.15s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+.btn:active { transform: translateY(1px); }
+.btn:focus-visible { outline: 2px solid var(--pine); outline-offset: 2px; }
+
+.btn-go {
+  background: var(--pine);
+  color: #f7f4ec;
+  box-shadow: var(--shadow-sm);
+}
+.btn-go:hover { background: var(--pine-deep); }
+
+.btn-assign {
+  background: var(--ochre-tint);
+  color: var(--ochre-ink);
+  border-color: #e6cf9e;
+}
+.btn-assign:hover { background: #ecdcb6; }
+
+.btn-ghost {
+  background: transparent;
+  color: var(--ink);
+  border-color: var(--line-strong);
+}
+.btn-ghost:hover { background: var(--paper-2); }
+
+/* ============================================================
+   Inputs
+   ============================================================ */
+.field {
+  width: 100%;
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--ink);
+  background: #fffdf9;
+  border: 1px solid var(--line-strong);
+  border-radius: 12px;
+  padding: 12px 14px;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+.field::placeholder { color: var(--ink-faint); }
+.field:focus {
+  outline: none;
+  border-color: var(--pine);
+  box-shadow: 0 0 0 3px var(--pine-tint);
+}
+.field.is-error {
+  border-color: var(--persimmon);
+  box-shadow: 0 0 0 3px var(--persimmon-tint);
+}
+.field-error-msg {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.02em;
+  color: var(--persimmon-ink);
+  margin-top: 6px;
+  display: block;
+}
+
+.field-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-bottom: 6px;
+  display: block;
+}
+
+/* checkbox */
+.check {
+  appearance: none;
+  width: 20px; height: 20px;
+  border: 1.5px solid var(--line-strong);
+  border-radius: 6px;
+  background: #fffdf9;
+  display: grid;
+  place-content: center;
+  cursor: pointer;
+  transition: background 0.12s ease, border-color 0.12s ease;
+}
+.check:checked { background: var(--pine); border-color: var(--pine); }
+.check:checked::after {
+  content: "";
+  width: 6px; height: 10px;
+  border: solid #fff;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg) translate(-0.5px, -1px);
+}
+.check:focus-visible { outline: 2px solid var(--pine); outline-offset: 2px; }
+
+/* ============================================================
+   Status chips
+   ============================================================ */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+}
+.chip-paid { background: var(--moss-tint); color: var(--moss-ink); border-color: #cdd9b3; }
+.chip-unpaid { background: var(--persimmon-tint); color: var(--persimmon-ink); border-color: #e7c4b4; }
+.chip-dot { width: 6px; height: 6px; border-radius: 999px; background: currentColor; }
+
+/* ============================================================
+   Orders rail (table)
+   ============================================================ */
+.rail { width: 100%; border-collapse: collapse; }
+.rail thead th {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  text-align: left;
+  padding: 14px 20px;
+  border-bottom: 1.5px dashed var(--line-strong);
+}
+.rail tbody td { padding: 16px 20px; border-bottom: 1px solid var(--line); font-size: 14px; }
+.rail tbody tr:last-child td { border-bottom: 0; }
+.rail tbody tr { transition: background 0.12s ease; }
+.rail tbody tr:hover { background: #fbf6ec; }
+
+/* nav */
+.nav-link {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ink-soft);
+  padding: 6px 2px;
+  position: relative;
+  transition: color 0.15s ease;
+}
+.nav-link:hover { color: var(--ink); }
+.nav-link.active { color: var(--ink); }
+.nav-link.active::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: -6px;
+  height: 2px;
+  background: var(--pine);
+  border-radius: 2px;
+}
+
+/* ---- responsive ---- */
+@media (max-width: 560px) {
+  .nav-tagline { display: none; }
+  nav { gap: 18px !important; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+}

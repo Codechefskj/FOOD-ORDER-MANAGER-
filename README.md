@@ -37,7 +37,7 @@ I built it one layer at a time: first the routing and layout, then the data and 
 
 ---
 
-# 📸 Application Screenshots
+# Application Screenshots
 
 <table>
 <tr>

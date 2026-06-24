@@ -2,6 +2,8 @@
 
 A smart food‑delivery order manager that tracks orders and automatically assigns delivery to the **nearest unpaid order**.
 
+🔗 Live demo: https://food-order-manager.vercel.app/
+
 ---
 
 ## Project Description

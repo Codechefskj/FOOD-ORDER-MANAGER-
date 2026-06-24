@@ -64,45 +64,6 @@ I built it one layer at a time: first the routing and layout, then the data and 
 </td>
 </tr>
 </table>
-
----
-
-## Installation Steps
-
-**Requirements**
-- Node.js 18+ installed on your computer (20 LTS recommended)
-- npm 9+
-
-**Step 1 — Clone the repository**
-```bash
-git clone <your-repository-url>
-```
-
-**Step 2 — Go into the project folder**
-```bash
-cd food-order-manager
-```
-
-**Step 3 — Install all dependencies**
-```bash
-npm install
-```
-
-**Step 4 — Start the development server**
-```bash
-npm run dev
-```
-
-**Step 5 — Open the app**
-
-Open the local URL shown in the terminal (default `http://localhost:5173`) in your browser.
-
-**Build for production (for deployment)**
-```bash
-npm run build      # outputs to dist/
-npm run preview    # preview the production build locally
-```
-
 ---
 
 ## Project Structure
